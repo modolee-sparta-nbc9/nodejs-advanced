@@ -1,14 +1,20 @@
 # 환경변수
 
-- SERVER_PORT
+- SERVER_PORT: 서버 포트 번호
+- MYSQL_USERNAME: MySQL 사용자 이름
+- MYSQL_PASSWORD: MySQL 비밀번호
+- MYSQL_DATABASE: MySQL Database 이름
+- MYSQL_HOST: MySQL 주소
+- PASSWORD_HASH_SALT_ROUNDS: bcrypt salt 생성 횟수
+- JWT_ACCESS_TOKEN_SECRET: JWT AccessToken 비밀번호
 
 # API 명세서 URL
 
-- 구글 Docs 공유 URL 추가
+https://docs.google.com/spreadsheets/d/1-_HMdxZOUkmOLYcTqN8UHypJoMVHqESIze3s_gbDywo/edit?usp=sharing
 
 # ERD URL
 
-- ERD Cloud URL 추가
+https://www.erdcloud.com/d/zzo9JoKE9Z7zfHTwq
 
 # 더 고민해 보기
 
