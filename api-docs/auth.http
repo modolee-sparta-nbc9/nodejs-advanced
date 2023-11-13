@@ -1,0 +1,10 @@
+### 회원가입
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+   "email": "example2@example.com",
+   "password": "eXampLeP@ss",
+   "passwordConfirm": "eXampLeP@ss",
+   "name": "관리자"
+}
