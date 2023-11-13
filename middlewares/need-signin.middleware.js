@@ -30,10 +30,7 @@ export const needSignin = async (req, res, next) => {
       });
     }
 
-    const decodedPayload = jwt.verify(
-      accessToken,
-      JWT_ACCESS_TOKEN_SECRET + '1',
-    );
+    const decodedPayload = jwt.verify(accessToken, JWT_ACCESS_TOKEN_SECRET);
     const { userId } = decodedPayload;
 
     // 일치 하는 userId가 없는 경우
