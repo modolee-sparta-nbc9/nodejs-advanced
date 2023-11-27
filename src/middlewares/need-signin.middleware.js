@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { JWT_ACCESS_TOKEN_SECRET } from '../constants/security.costant.js';
-import db from '../models/index.cjs';
+import db from '../../models/index.cjs';
 const { Users } = db;
 
 export const needSignin = async (req, res, next) => {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "nodemon src/app.js",
     "migrate:up": "npx sequelize db:migrate --config config/config.cjs",
     "migrate:down": "npx sequelize db:migrate:undo --config config/config.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"

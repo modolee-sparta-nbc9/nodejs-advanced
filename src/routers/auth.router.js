@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import db from '../models/index.cjs';
+import db from '../../models/index.cjs';
 import {
   PASSWORD_HASH_SALT_ROUNDS,
   JWT_ACCESS_TOKEN_SECRET,
