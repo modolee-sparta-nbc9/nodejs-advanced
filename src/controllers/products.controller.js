@@ -9,7 +9,7 @@ export class ProductsController {
     this.productsService = new ProductsService();
   }
 
-  createOne = async (req, res) => {
+  createOne = async (req, res, next) => {
     try {
       const { id: userId, name: userName } = res.locals.user;
       const { title, description } = req.body;
@@ -41,15 +41,11 @@ export class ProductsController {
         data,
       });
     } catch (error) {
-      console.error(error);
-      return res.status(500).json({
-        success: false,
-        message: '예상치 못한 에러가 발생하였습니다. 관리자에게 문의하세요.',
-      });
+      next(error);
     }
   };
 
-  readMany = async (req, res) => {
+  readMany = async (req, res, next) => {
     try {
       const { sort } = req.query;
       let upperCaseSort = sort?.toUpperCase();
@@ -68,15 +64,11 @@ export class ProductsController {
         data,
       });
     } catch (error) {
-      console.error(error);
-      return res.status(500).json({
-        success: false,
-        message: '예상치 못한 에러가 발생하였습니다. 관리자에게 문의하세요.',
-      });
+      next(error);
     }
   };
 
-  readOne = async (req, res) => {
+  readOne = async (req, res, next) => {
     try {
       const { productId } = req.params;
 
@@ -88,21 +80,11 @@ export class ProductsController {
         data: product,
       });
     } catch (error) {
-      console.error(error);
-
-      const statusCode = error.statusCode ?? 500;
-      const message =
-        error.message ??
-        '예상치 못한 에러가 발생하였습니다. 관리자에게 문의하세요.';
-
-      return res.status(statusCode).json({
-        success: false,
-        message,
-      });
+      next(error);
     }
   };
 
-  updateOne = async (req, res) => {
+  updateOne = async (req, res, next) => {
     try {
       const { productId } = req.params;
       const { title, description, status } = req.body;
@@ -142,21 +124,11 @@ export class ProductsController {
         data,
       });
     } catch (error) {
-      console.error(error);
-
-      const statusCode = error.statusCode ?? 500;
-      const message =
-        error.message ??
-        '예상치 못한 에러가 발생하였습니다. 관리자에게 문의하세요.';
-
-      return res.status(statusCode).json({
-        success: false,
-        message,
-      });
+      next(error);
     }
   };
 
-  deleteOne = async (req, res) => {
+  deleteOne = async (req, res, next) => {
     try {
       const { productId } = req.params;
       const { id: userId, name: userName } = res.locals.user;
@@ -173,17 +145,7 @@ export class ProductsController {
         data,
       });
     } catch (error) {
-      console.error(error);
-
-      const statusCode = error.statusCode ?? 500;
-      const message =
-        error.message ??
-        '예상치 못한 에러가 발생하였습니다. 관리자에게 문의하세요.';
-
-      return res.status(statusCode).json({
-        success: false,
-        message,
-      });
+      next(error);
     }
   };
 }
