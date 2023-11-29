@@ -1,9 +1,5 @@
-import { Sequelize } from 'sequelize';
-import db from '../../models/index.cjs';
 import { ProductsRepository } from '../repositories/products.repository.js';
 import * as HttpStatus from '../errors/http-status.error.js';
-
-const { Products, Users } = db;
 
 export class ProductsService {
   constructor() {

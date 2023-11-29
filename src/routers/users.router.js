@@ -5,6 +5,6 @@ const usersRouter = Router();
 
 const usersController = new UsersController();
 
-usersRouter.get('/me', needSignin, usersController.readMyInfo);
+usersRouter.get('/me', needSignin, usersController.readMyInfo); // 내 정보 조회
 
 export { usersRouter };
