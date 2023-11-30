@@ -30,7 +30,7 @@ export class AuthService {
 
   signin = async ({ email, password }) => {
     const user = await this.usersRepository.readOneByEmail(email);
-    const hashedPassword = user?.password;
+    const hashedPassword = user?.password ?? '';
 
     const isPasswordMatched = bcrypt.compareSync(password, hashedPassword);
 

@@ -68,7 +68,7 @@ export class ProductsController {
     try {
       const { productId } = req.params;
 
-      const product = await this.productsService.readOne({ id: productId });
+      const product = await this.productsService.readOne({ id: +productId });
 
       return res.status(200).json({
         success: true,
@@ -108,7 +108,7 @@ export class ProductsController {
       const data = await this.productsService.updateOne({
         userId,
         userName,
-        id: productId,
+        id: +productId,
         title,
         description,
         status,
@@ -132,7 +132,7 @@ export class ProductsController {
       const data = await this.productsService.deleteOne({
         userId,
         userName,
-        id: productId,
+        id: +productId,
       });
 
       return res.status(200).json({
