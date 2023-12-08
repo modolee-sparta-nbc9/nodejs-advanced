@@ -1,9 +1,12 @@
 import * as HttpStatus from '../errors/http-status.error.js';
-import { prisma } from '../utils/prisma/index.js';
 
 export class ProductsRepository {
+  constructor(productsModel) {
+    this.productsModel = productsModel;
+  }
+
   createOne = async ({ title, description, userId }) => {
-    const product = await prisma.products.create({
+    const product = await this.productsModel.create({
       data: { title, description, userId },
     });
 
@@ -11,7 +14,7 @@ export class ProductsRepository {
   };
 
   readMany = async ({ sort }) => {
-    const products = await prisma.products.findMany({
+    const products = await this.productsModel.findMany({
       include: {
         user: {
           select: {
@@ -35,7 +38,7 @@ export class ProductsRepository {
   };
 
   readOneById = async (id) => {
-    const product = await prisma.products.findUnique({
+    const product = await this.productsModel.findUnique({
       where: { id },
       include: {
         user: {
@@ -59,13 +62,13 @@ export class ProductsRepository {
   };
 
   updateOneById = async (id, { title, description, status }) => {
-    const product = await prisma.products.findUnique({ where: { id } });
+    const product = await this.productsModel.findUnique({ where: { id } });
 
     if (!product) {
       throw new HttpStatus.NotFound('상품 조회에 실패했습니다.');
     }
 
-    const updatedProduct = await prisma.products.update({
+    const updatedProduct = await this.productsModel.update({
       where: { id },
       data: {
         ...(title && { title }),
@@ -78,13 +81,13 @@ export class ProductsRepository {
   };
 
   deleteOneById = async (id) => {
-    const product = await prisma.products.findUnique({ where: { id } });
+    const product = await this.productsModel.findUnique({ where: { id } });
 
     if (!product) {
       throw new HttpStatus.NotFound('상품 조회에 실패했습니다.');
     }
 
-    const deletedProduct = await prisma.products.delete({ where: { id } });
+    const deletedProduct = await this.productsModel.delete({ where: { id } });
 
     return deletedProduct;
   };

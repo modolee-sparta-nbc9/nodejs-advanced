@@ -1,8 +1,6 @@
-import { ProductsService } from '../services/products.service.js';
-
 export class ProductsController {
-  constructor() {
-    this.productsService = new ProductsService();
+  constructor(productsService) {
+    this.productsService = productsService;
   }
 
   createOne = async (req, res, next) => {

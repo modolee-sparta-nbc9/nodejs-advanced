@@ -5,11 +5,9 @@ import {
   JWT_ACCESS_TOKEN_EXPIRES_IN,
 } from '../constants/security.costant.js';
 import * as HttpStatus from '../errors/http-status.error.js';
-import { UsersRepository } from '../repositories/users.repository.js';
-
 export class AuthService {
-  constructor() {
-    this.usersRepository = new UsersRepository();
+  constructor(usersRepository) {
+    this.usersRepository = usersRepository;
   }
 
   signup = async ({ email, name, password }) => {

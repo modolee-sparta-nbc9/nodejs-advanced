@@ -1,9 +1,8 @@
-import { ProductsRepository } from '../repositories/products.repository.js';
 import * as HttpStatus from '../errors/http-status.error.js';
 
 export class ProductsService {
-  constructor() {
-    this.productsRepository = new ProductsRepository();
+  constructor(productsRepository) {
+    this.productsRepository = productsRepository;
   }
 
   createOne = async ({ title, description, userId, userName }) => {
